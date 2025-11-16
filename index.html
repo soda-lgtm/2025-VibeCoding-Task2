@@ -1,37 +1,495 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>個人作品集</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+    /* CSS:BASE-START */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1f2933;
+      background-color: #f9fafb;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .section {
+      padding: 64px 20px;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 24px;
+      letter-spacing: 0.05em;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: #2563eb;
+      color: #f9fafb;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #2563eb;
+      border-color: rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(37, 99, 235, 0.05);
+      border-color: #2563eb;
+      transform: translateY(-1px);
+    }
+    /* CSS:BASE-END */
+
+    /* CSS:HERO-START */
+    .section-hero {
+      min-height: 100vh;
+      padding: 80px 20px 64px;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at top left, #dbeafe 0, #eff6ff 40%, #f9fafb 80%);
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      font-weight: 800;
+      color: #0b1120;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 0 24px;
+      color: #4b5563;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 32px;
+    }
+    /* CSS:HERO-END */
+
+    /* CSS:ABOUT-START */
+    .section-about {
+      background-color: #ffffff;
+    }
+
+    .section-about .section-title {
+      margin-bottom: 16px;
+    }
+
+    .about-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .about-content {
+      font-size: 0.98rem;
+      color: #4b5563;
+    }
+
+    .about-content p {
+      margin: 0 0 12px;
+    }
+
+    .about-content p:last-of-type {
+      margin-bottom: 20px;
+    }
+
+    .about-list-title {
+      font-weight: 600;
+      margin: 16px 0 8px;
+      color: #111827;
+    }
+
+    .about-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+
+    .about-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 6px;
+    }
+
+    .about-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    .about-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .about-photo {
+      flex-shrink: 0;
+    }
+
+    .about-photo-figure {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .about-photo-caption {
+      font-size: 0.8rem;
+      padding: 8px 12px 10px;
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(30, 64, 175, 0.9));
+      color: #e5e7eb;
+    }
+    /* CSS:ABOUT-END */
+
+    /* CSS:SKILLS-START */
+    .section-skills {
+      background-color: #f3f4f6;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .skill-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background-color: #e5e7eb;
+      font-size: 0.85rem;
+      text-align: center;
+      color: #374151;
+    }
+    /* CSS:SKILLS-END */
+
+    /* CSS:PROJECTS-START */
+    .section-projects {
+      background-color: #ffffff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #f9fafb;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .project-meta {
+      font-size: 0.83rem;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin: 0;
+    }
+    /* CSS:PROJECTS-END */
+
+    /* CSS:CONTACT-START */
+    .section-contact {
+      background-color: #0b1120;
+      color: #e5e7eb;
+    }
+
+    .section-contact .section-title {
+      color: #f9fafb;
+    }
+
+    .contact-text {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      margin: 0 0 20px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      font-size: 0.95rem;
+    }
+
+    .contact-list li {
+      margin-bottom: 6px;
+    }
+
+    .contact-list a {
+      color: #bfdbfe;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .contact-list a:hover {
+      color: #93c5fd;
+    }
+    /* CSS:CONTACT-END */
+
+    /* CSS:RWD-START */
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .about-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .about-content,
+      .about-photo {
+        flex: 1;
+      }
+
+      .about-photo img {
+        height: 340px;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .hero-title {
+        font-size: 3.3rem;
+      }
+
+      .section,
+      .section-hero {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+
+      .section-inner,
+      .hero-inner,
+      .about-inner {
+        max-width: 1040px;
+      }
+    }
+    /* CSS:RWD-END */
   </style>
 </head>
 <body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集a</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
+  <main>
+    <!-- SECTION:HERO-START -->
+    <section id="hero" class="section section-hero section-hero">
+      <div class="hero-inner">
+        <div class="hero-kicker">FRONTEND / MENTOR / FREELANCER</div>
+        <h1 class="hero-title">一起把想法，做成清晰可維護的網頁體驗。</h1>
+        <p class="hero-subtitle">
+          我專注在前端開發與教學，從版型切版、互動設計到前端架構規劃，陪你一步步把專案從草圖帶到線上。
+        </p>
+        <p class="hero-meta">
+          熟悉 HTML / CSS / JavaScript / React 生態圈，擅長把複雜需求拆解成容易理解、容易維護的結構。
+        </p>
+        <div class="button-row">
+          <a href="#projects" class="btn btn-primary">查看作品集</a>
+          <a href="#contact" class="btn btn-outline">聯絡我</a>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION:HERO-END -->
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
+    <!-- SECTION:ABOUT-START -->
+    <section id="about" class="section section-about">
+      <div class="about-inner">
+        <div class="about-content">
+          <h2 class="section-title">關於我</h2>
+          <p>
+            目前主要身分是前端工程師，同時也從事教學與接案合作。日常工作多在處理 HTML / CSS / JavaScript／React 等前端技術，
+            幫助團隊把設計稿轉成穩定、好維護又具延展性的網頁介面。
+          </p>
+          <p>
+            過去有跨行銷與教學的背景，很重視溝通與脈絡整理。習慣先把需求講清楚、畫清楚，再開始動手實作；
+            喜歡用「拆解＋示範」的方式帶著夥伴一起理解，而不是只丟結論。
+          </p>
+
+          <div class="about-list-title">我可以幫上忙的地方：</div>
+          <ul class="about-list">
+            <li>協助規劃前端切版結構，讓設計在各裝置上都有穩定的呈現。</li>
+            <li>以教練方式陪練，幫你釐清觀念、Review 程式碼並優化可讀性與維護性。</li>
+            <li>從需求整理到上線前驗收，提供一套有節奏、可重複的前端協作流程。</li>
+          </ul>
+
+          <div class="about-actions">
+            <a href="#projects" class="btn btn-primary">查看作品集</a>
+            <a href="#contact" class="btn btn-outline">聯絡我</a>
+          </div>
+        </div>
+
+        <div class="about-photo">
+          <figure class="about-photo-figure">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80" alt="專注撰寫程式碼的前端工程師示意照片">
+            <figcaption class="about-photo-caption">
+              專注寫程式的時候，常常是一邊思考結構、一邊想著怎麼教別人也寫得懂。
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION:ABOUT-END -->
+
+    <!-- SECTION:SKILLS-START -->
+    <section id="skills" class="section section-skills">
+      <div class="section-inner">
+        <h2 class="section-title">Skills</h2>
+        <p>簡單列一些目前較常使用、也可以在專案中提供協力的技能。</p>
+        <div class="skills-grid">
+          <div class="skill-pill">HTML / Semantic Markup</div>
+          <div class="skill-pill">CSS / RWD Layout</div>
+          <div class="skill-pill">JavaScript (ES6+)</div>
+          <div class="skill-pill">React / SPA</div>
+          <div class="skill-pill">Git / GitHub Flow</div>
+          <div class="skill-pill">教學與程式導讀</div>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION:SKILLS-END -->
+
+    <!-- SECTION:PROJECTS-START -->
+    <section id="projects" class="section section-projects">
+      <div class="section-inner">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3 class="project-title">側重教學的前端練習平台</h3>
+            <div class="project-meta">React / RWD / 前端教學實驗</div>
+            <p class="project-desc">
+              以「小步快走＋即時回饋」為核心設計的練習平台，讓初學者在寫程式時能看見清楚的提示與範例，避免卡關太久。
+            </p>
+          </article>
+          <article class="project-card">
+            <h3 class="project-title">內容導向的個人品牌網站</h3>
+            <div class="project-meta">HTML / CSS / 輕量前端架構</div>
+            <p class="project-desc">
+              針對個人品牌規劃資訊架構與版面，重視可讀性與維護性，讓之後的文章與案例能持續被擴充與整理。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION:PROJECTS-END -->
+
+    <!-- SECTION:CONTACT-START -->
+    <section id="contact" class="section section-contact">
+      <div class="section-inner">
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-text">
+          若你正在規劃一個需要前端開發、教學協作或一起討論流程設計的專案，歡迎寫信給我，簡單說明你的情境與期待，我會再回覆可行的合作方式與時間。
+        </p>
+        <ul class="contact-list">
+          <li>Email：<a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li>GitHub：<a href="https://github.com/example" target="_blank" rel="noopener">github.com/example</a></li>
+        </ul>
+        <div class="button-row">
+          <a href="mailto:hello@example.com" class="btn btn-primary">寫信給我</a>
+          <a href="#hero" class="btn btn-outline">回到最上面</a>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION:CONTACT-END -->
+  </main>
 </body>
 </html>
